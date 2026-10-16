@@ -1,3 +1,5 @@
+
+-[keerthana](https://github.com/keerthana20097234-cell)"This is my first contribution for the project"
 - [Rudraksh Agarwal](https://github.com/rudrakshagarwal4200-ai)
 i-[Adeia](https://github.com/AdeiaSaif/)
 -[laxmiram](https://github.com/balukota9494-sudo)
@@ -5,6 +7,7 @@ i-[Adeia](https://github.com/AdeiaSaif/)
 -[bhanu](https://github.com/samudralabhanuteja65-ctrl)"This is my first open souece contribution"
 [Yash]will become great
 rohithravindran
+[Tanvi](https://github.com/tanvisingh20073004-star)
 -[Pabitra](https://github.com/Pabitraojha)
 [Nikhil korada](https://github.com/nikhilkorada05-svg/first-contributions.git)this is my new project
 -[Anusha](https://github.com/bharaiahchattu)''This is my first open source contribution on github 
@@ -17,7 +20,7 @@ rohithravindran
 -[Challa Jaswanth](https://github.com/ChallaJaswanth-jpg)"This is my first open source contribution on github
 - [DeviPrasad] (https://ithub.com/dsp-code-enthusiastgit)"This is my first open source contribution on github here for the first time"
 - [VarunSandesh](https://github.com/varunsandesh0425-VK) "This is my first open source contribution on github"
--[somendra dixit] (https://github.com/somendra-dixit1120) "This is my first contribution for the project"
+-[somendra di] (https://github.com/somendra-dixit1120) "This is my first contribution for the project"
 -[Dharani](https://github.com/2401050195)"This is my first contribution for the project"
 -[Abhishek-Sahu](https://github.com/101010watson)"This is the starting of my open source contribution"
 -[Sushant](https://github.com/SKSalunkhe)
@@ -34,6 +37,7 @@ rohithravindran
 - [@shlokgit-04](https://github.com/shlokgit-04)
 -[Vamsi](https://github.com/kambapuvamsi1845-cloud/)
 -[Sirivennela](https://github.com/kancharlasirivennela723-pixel)"Thi is my first contribution on github"
+SANKALP PANDEY
 - [Sujal Negi](https://github.com/SujalNegi2007) - My First Contribution.
 - [yvs-prasanna-new] - This is my Contribution
 -  [FrozenColdest-87] - My First.
@@ -98,6 +102,7 @@ rohithravindran
 - [chilukuririshi-gif](https://github.com/chilukuririshi-gif) it's my first contribution
 - [korraimaheshbabu60-max](https://github.com/korraimaheshbabu60-max) My first contribution
 - [Komal](https://github.com/komal1101-ngs) My first Hacktober
+- [HinanawiTenshi](https//github.com/HinanawiTenshi104/) - Even celestial wants to make open source contribution~
 - [Komal](https://github.com/komal1101-ngs) My Trail
 -[Siva-Sandeep](https://github.com/lighteningeditz-bot) My first contribution
 
@@ -128,6 +133,7 @@ rohithravindran
 - [Ritesh Singh] (https://github.com/Ritesh-977) -- My first Contributions
 - [Esti](https://github.com/3256483-lab)
 -[Aditya Kumar](https://github.com/Aditya-kumar-yadav)-- Hello world. Aditya Kumar here, pushing my first open-source commit. Every long game starts with a single move; let's see where my final PR eventually lands
+-[pranaya] (https://github.com/pranayareddy07)
 -[Nandini Singh](https://github.com/Nandinisingh-05) - Hi, this is my first contribution!
 -[surajorg48](https://github.com/surajorg48)
 -[Pablo Ribeiro](https://github.com/PabLoSWeB)
@@ -7264,6 +7270,8 @@ https://github.com/divyagunda0717/first-contributions.git-[divya]
 - [Naginder](https://github.com/Naginder)
 - [Mubashir Mohamed] (https://github.com/Mubashir-Mohamed)
 - [TigerInTaiga](https://github.com/BitBranchi)
+- [Meghana](https://github.com/yerukolameghana-aiml)
+=======
 
 - - [Aryan Maurya](https://github.com/aryan-maurya-07) - My first open-source contribution
 
@@ -7279,3 +7287,4 @@ https://github.com/divyagunda0717/first-contributions.git-[divya]
 - [Nevil Amraniya](https://github.com/nevil-codes)
 
 - [Çiğdem Aydın](https://github.com/cigdem-aydin)
+- [Bhargavi](https://github.com/bhargavisangareddi)
