@@ -73,3 +73,7 @@ def test_demo_samples_are_explicitly_synthetic_and_not_persisted(tmp_path):
     assert all(report["synthetic"] for report in samples)
     assert all("fictional" in report["crop"].casefold() for report in samples)
     assert load_reports(tmp_path / "reports.csv") == []
+    assert all(
+        sum(flag["score"] for flag in report["risk_flags"]) == report["risk_score"]
+        for report in samples
+    )

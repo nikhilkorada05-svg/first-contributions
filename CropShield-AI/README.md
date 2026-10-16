@@ -56,10 +56,21 @@ and report storage continue to work.
 
 Open the local address printed by Streamlit if a browser window does not open
 automatically. Use **Crop assistant** to submit crop and field observations.
-Enter or select an installed Ollama model to request a local explanation; leave
-the model blank to use only deterministic risk rules. Reports are saved to
-`data/reports.csv`, which is excluded from version control. The report dashboard
-can show fictional sample reports and download the displayed table as CSV.
+By default, Ollama and persistent disk storage are disabled; reports stay only
+in the current Streamlit browser session. To explicitly enable local Ollama and
+CSV storage on a trusted personal computer, set this in PowerShell before
+starting Streamlit:
+
+```powershell
+$env:CROPSHIELD_LOCAL_MODE = "true"
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+In local mode, choose an installed Ollama model for an explanation. Local
+reports are saved to `data/reports.csv`, which is excluded from version control.
+The report dashboard can show fictional sample reports and download the
+displayed table as CSV. Do not enable local mode on a public/shared server:
+report CSV files are not encrypted or separated by user.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -72,21 +83,13 @@ After the code is pushed:
    branch `main`.
 3. Set the app file path to `CropShield-AI/app.py`, then deploy. The
    `requirements.txt` file is alongside the entrypoint.
-4. In the deployed app's **Settings → Secrets**, add:
-
-   ```toml
-   IS_STREAMLIT_CLOUD = "true"
-   ```
-
-   Save the setting and allow the app to reboot. This disables Ollama
-   connection attempts in the hosted environment.
-
-Community Cloud does not run Ollama on your computer. The hosted version
-therefore disables Ollama and keeps reports only in the current browser session;
-it does not save farmer reports to the shared server filesystem. For persistent
-local reports and local Ollama, run the app on your own computer using the
-instructions above. Do not enter private or personally identifying information
-into a public hosted app.
+Community Cloud does not run Ollama on your computer. The app therefore
+defaults to a privacy-safe mode: it does not contact Ollama or save report CSV
+files on the server, and report state is held in the current Streamlit session
+on the server. Sessions are not shared through the app's dashboard, but Streamlit
+Cloud still processes the information submitted to the app. Do not enter private
+or personally identifying information into a public hosted app. If code is ever
+deployed on a server you do not control, leave `CROPSHIELD_LOCAL_MODE` unset.
 
 ## Run tests
 
@@ -94,8 +97,9 @@ into a public hosted app.
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-The tests cover deterministic rule scoring and local CSV storage. They require
-neither Ollama nor internet access.
+The tests cover deterministic rule scoring, local CSV storage, privacy-mode
+defaults, and mocked Ollama responses. They require neither Ollama nor internet
+access.
 
 ## Risk rules
 

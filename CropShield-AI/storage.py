@@ -171,7 +171,26 @@ def get_sample_reports() -> list[dict[str, Any]]:
             },
             "risk_score": 8,
             "risk_level": "High",
-            "risk_flags": [],
+            "risk_flags": [
+                {
+                    "risk": "Wilting observed",
+                    "severity": "Moderate",
+                    "score": 3,
+                    "reason": "Fictional demonstration flag.",
+                },
+                {
+                    "risk": "Standing water observed",
+                    "severity": "Elevated",
+                    "score": 3,
+                    "reason": "Fictional demonstration flag.",
+                },
+                {
+                    "risk": "Wet soil reported",
+                    "severity": "Moderate",
+                    "score": 2,
+                    "reason": "Fictional demonstration flag.",
+                },
+            ],
             "action_plan": ["Fictional demonstration only; not field advice."],
             "ai_explanation": "",
             "follow_up_questions": [],

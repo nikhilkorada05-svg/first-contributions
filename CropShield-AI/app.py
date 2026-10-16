@@ -1,25 +1,17 @@
 from __future__ import annotations
 
 import json
-import os
 from datetime import datetime
 
 import pandas as pd
 import streamlit as st
 
+from app_mode import local_services_enabled
 from ai_engine import OllamaError, explain_crop_problem, list_models
 from crop_rules import assess_field_risk, create_action_plan
 from storage import get_sample_reports, load_reports, save_report
 
-try:
-    hosted_secret = st.secrets.get("IS_STREAMLIT_CLOUD", "")
-except st.errors.StreamlitSecretNotFoundError:
-    hosted_secret = ""
-
-IS_HOSTED = (
-    os.environ.get("IS_STREAMLIT_CLOUD", "").casefold() == "true"
-    or str(hosted_secret).casefold() == "true"
-)
+LOCAL_MODE = local_services_enabled()
 
 st.set_page_config(
     page_title="CropShield AI",
@@ -56,12 +48,6 @@ st.markdown(
 )
 
 
-def _json_text(value: object) -> str:
-    if isinstance(value, str):
-        return value
-    return json.dumps(value, ensure_ascii=False)
-
-
 def _format_report_rows(reports: list[dict]) -> pd.DataFrame:
     rows = []
     for report in reports:
@@ -81,9 +67,11 @@ def _format_report_rows(reports: list[dict]) -> pd.DataFrame:
 
 def _show_dashboard() -> None:
     st.subheader("Report dashboard")
-    if IS_HOSTED:
+    if not LOCAL_MODE:
         reports = st.session_state.setdefault("reports", [])
-        st.caption("Hosted mode keeps reports only for this browser session.")
+        st.caption(
+            "Reports stay in this Streamlit session and are not written to a shared file."
+        )
     else:
         try:
             reports = load_reports()
@@ -139,10 +127,16 @@ def _show_dashboard() -> None:
 
 def _show_assistant() -> None:
     st.subheader("Crop problem assistant")
-    st.write(
-        "Record what you observe. The field-risk score is calculated locally from "
-        "transparent rules; Ollama is used only to help explain possible causes."
-    )
+    if LOCAL_MODE:
+        st.write(
+            "Record what you observe. The field-risk score is calculated locally "
+            "from transparent rules; Ollama is used only to help explain possible causes."
+        )
+    else:
+        st.write(
+            "Record what you observe. Transparent rules calculate the field-risk "
+            "score. AI is off in privacy-safe mode."
+        )
     with st.form("crop_assessment"):
         left, right = st.columns(2)
         with left:
@@ -171,11 +165,12 @@ def _show_assistant() -> None:
                 placeholder="Recent changes, affected pattern, or checks already made.",
                 height=100,
             )
-        if IS_HOSTED:
+        if not LOCAL_MODE:
             model_name = ""
             st.info(
-                "Local Ollama explanations are available when running CropShield "
-                "on your own computer, not from this hosted version."
+                "Ollama and persistent local storage are disabled by default. "
+                "Run on your own trusted computer with CROPSHIELD_LOCAL_MODE=true "
+                "to enable them."
             )
         else:
             model_name = st.text_input(
@@ -247,10 +242,15 @@ def _show_assistant() -> None:
                     f"Local AI explanation could not be generated. Your rule-based "
                     f"assessment is still available. {exc}"
                 )
-    else:
+    elif LOCAL_MODE:
         st.info(
             "No Ollama model selected. The rule-based risk review and action plan "
             "are available; add an installed model name to request an explanation."
+        )
+    else:
+        st.info(
+            "AI explanations are off in privacy-safe mode. The rule-based risk "
+            "review and action plan are still available."
         )
 
     report = {
@@ -272,7 +272,7 @@ def _show_assistant() -> None:
         "ai_status": ai_status,
         "synthetic": False,
     }
-    if IS_HOSTED:
+    if not LOCAL_MODE:
         st.session_state.setdefault("reports", []).append(report)
     else:
         try:
@@ -284,8 +284,8 @@ def _show_assistant() -> None:
     st.session_state["latest_report"] = report
     st.success(
         "Assessment saved for this browser session."
-        if IS_HOSTED
-        else "Assessment saved locally."
+        if LOCAL_MODE
+        else "Assessment saved for this browser session."
     )
 
     st.markdown("### Field risk checklist")
@@ -328,8 +328,11 @@ with st.sidebar:
     page = st.radio("Navigate", ["Crop assistant", "Report dashboard"])
     st.divider()
     st.markdown("**Ollama model status**")
-    if IS_HOSTED:
-        st.caption("Ollama is disabled in hosted mode; no cloud AI fallback is used.")
+    if not LOCAL_MODE:
+        st.caption(
+            "Privacy-safe mode: Ollama is off and reports are session-only. "
+            "No cloud AI fallback is used."
+        )
     else:
         try:
             installed_models = list_models()
