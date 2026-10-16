@@ -70,8 +70,8 @@ After the code is pushed:
    GitHub account that can access the repository and authorize access if asked.
 2. Choose **Create app** and select `nikhilkorada05-svg/first-contributions`,
    branch `main`.
-3. Set the app's root directory to `CropShield-AI` and the main file to
-   `app.py`, then deploy.
+3. Set the app file path to `CropShield-AI/app.py`, then deploy. The
+   `requirements.txt` file is alongside the entrypoint.
 
 Community Cloud does not run Ollama on your computer. The hosted version
 therefore disables Ollama and keeps reports only in the current browser session;
