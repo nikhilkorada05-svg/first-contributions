@@ -6,6 +6,7 @@ i-[Adeia](https://github.com/AdeiaSaif/)
 [Yash]will become great
 rohithravindran
 -[Pabitra](https://github.com/Pabitraojha)
+[Nikhil korada](https://github.com/nikhilkorada05-svg/first-contributions.git)this is my new project
 -[Anusha](https://github.com/bharaiahchattu)''This is my first open source contribution on github 
 -[Kiran](https://github.com/kalepuravikiran-ai/S-K-D.git)
 -[Varshini](https://github.com/Varsha3235)"This is my first open source contribution on github"
