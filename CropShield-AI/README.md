@@ -72,6 +72,14 @@ After the code is pushed:
    branch `main`.
 3. Set the app file path to `CropShield-AI/app.py`, then deploy. The
    `requirements.txt` file is alongside the entrypoint.
+4. In the deployed app's **Settings → Secrets**, add:
+
+   ```toml
+   IS_STREAMLIT_CLOUD = "true"
+   ```
+
+   Save the setting and allow the app to reboot. This disables Ollama
+   connection attempts in the hosted environment.
 
 Community Cloud does not run Ollama on your computer. The hosted version
 therefore disables Ollama and keeps reports only in the current browser session;

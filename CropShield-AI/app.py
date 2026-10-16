@@ -11,7 +11,15 @@ from ai_engine import OllamaError, explain_crop_problem, list_models
 from crop_rules import assess_field_risk, create_action_plan
 from storage import get_sample_reports, load_reports, save_report
 
-IS_HOSTED = os.environ.get("IS_STREAMLIT_CLOUD", "").casefold() == "true"
+try:
+    hosted_secret = st.secrets.get("IS_STREAMLIT_CLOUD", "")
+except st.errors.StreamlitSecretNotFoundError:
+    hosted_secret = ""
+
+IS_HOSTED = (
+    os.environ.get("IS_STREAMLIT_CLOUD", "").casefold() == "true"
+    or str(hosted_secret).casefold() == "true"
+)
 
 st.set_page_config(
     page_title="CropShield AI",
